@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api/tasks";
+const API = null; // GitHub Pages에서는 백엔드 없이 localStorage로 동작
 let allTasks = [];
 let currentFilter = "전체";
 let selectedSubject = '';
@@ -156,6 +156,7 @@ function closeOnOverlay(e) {
 
 async function loadTasks() {
   try {
+    if (!API) throw new Error("GitHub Pages local mode");
     const res = await fetch(API);
     if (!res.ok) throw new Error();
     allTasks = await res.json();
@@ -353,6 +354,7 @@ async function addTask() {
 
   const newTask = { subject, title, due, done: false };
   try {
+    if (!API) throw new Error("GitHub Pages local mode");
     const res = await fetch(API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -374,6 +376,7 @@ async function addTask() {
 
 async function toggleDone(id, currentDone) {
   try {
+    if (!API) throw new Error("GitHub Pages local mode");
     await fetch(`${API}/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -441,7 +444,7 @@ async function deleteTask(id) {
       
       if (targetId !== null) {
         try { 
-          await fetch(`${API}/${targetId}`, { method: "DELETE" }); 
+          if (API) await fetch(`${API}/${targetId}`, { method: "DELETE" }); 
         } catch {}
         allTasks = allTasks.filter(t => t.id !== targetId);
         saveLocal();
