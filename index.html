@@ -1,150 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>수행평가 관리</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>수행평가 관리</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#0b1020;--card:#121a2d;--card2:#182238;--line:#273451;--text:#f4f7ff;--muted:#98a6c1;--accent:#7c8cff;--accent2:#5eead4;--danger:#fb7185}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;background:radial-gradient(circle at top,#1a2550 0,#0b1020 45%,#070b15 100%);color:var(--text);min-height:100vh}
+button,input,select{font:inherit}
+button{border:0;cursor:pointer}
+.hidden{display:none!important}
+.app{width:min(1120px,calc(100% - 28px));margin:auto;padding:28px 0 80px}
+.setup{min-height:100vh;display:grid;place-items:center}
+.setup-card{width:min(620px,100%);padding:34px;border:1px solid var(--line);background:rgba(18,26,45,.9);border-radius:26px;box-shadow:0 25px 80px rgba(0,0,0,.35)}
+.logo{font-size:42px;margin-bottom:8px}.eyebrow{color:var(--accent2);font-weight:700}.setup h1{margin:4px 0 10px;font-size:34px}.desc{color:var(--muted);line-height:1.7}
+.form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0}
+label{display:grid;gap:7px;color:var(--muted);font-size:14px}
+select,input{width:100%;border:1px solid var(--line);background:#0d1527;color:var(--text);border-radius:12px;padding:12px;outline:none}
+select:focus,input:focus{border-color:var(--accent)}
+.primary{background:linear-gradient(135deg,#7c8cff,#5968ee);color:white;padding:13px 18px;border-radius:12px;font-weight:800}
+.primary:hover{filter:brightness(1.08)}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+.brand{display:flex;gap:12px;align-items:center}.brand-icon{font-size:32px}.brand h1{font-size:25px;margin:0}.sub{color:var(--muted);font-size:13px;margin-top:3px}
+.ghost{background:#151f35;color:#dce4f7;border:1px solid var(--line);padding:10px 13px;border-radius:11px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.stat{padding:20px;background:rgba(18,26,45,.86);border:1px solid var(--line);border-radius:18px}.stat b{display:block;font-size:27px}.stat span{color:var(--muted);font-size:13px}
+.toolbar{display:flex;gap:10px;align-items:center;margin:15px 0;overflow:auto;padding-bottom:3px}.filters{display:flex;gap:8px;flex:1}
+.filter{white-space:nowrap;background:#121a2d;border:1px solid var(--line);color:#b9c5dc;padding:9px 13px;border-radius:999px}.filter.active{background:#6675f2;color:white;border-color:#7c8cff}
+.list{display:grid;gap:10px}.empty{padding:48px;text-align:center;color:var(--muted);background:rgba(18,26,45,.65);border:1px dashed var(--line);border-radius:18px}
+.task{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:17px;background:rgba(18,26,45,.88);border:1px solid var(--line);border-radius:17px;transition:.2s}.task:hover{transform:translateY(-1px);border-color:#3b4b70}
+.check{width:25px;height:25px;border-radius:50%;border:2px solid #52617d;background:transparent;color:white}.check.done{background:#4ade80;border-color:#4ade80}.task.done .title{text-decoration:line-through;color:#71809d}.title{font-weight:750}.meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:7px;color:var(--muted);font-size:12px}.badge{padding:4px 8px;border-radius:999px;background:#202c46;color:#d7e0f4}.badge.dday{background:#392133;color:#ff9caf}.delete{background:transparent;color:#7f8ca6;padding:8px}.delete:hover{color:var(--danger)}
+.fab{position:fixed;right:28px;bottom:28px;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#7c8cff,#5968ee);color:white;font-size:29px;box-shadow:0 12px 30px rgba(66,79,220,.35)}
+.modal{position:fixed;inset:0;background:rgba(3,7,16,.72);display:grid;place-items:center;padding:18px;z-index:10}.modal-card{width:min(520px,100%);max-height:85vh;overflow:auto;background:#121a2d;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 25px 80px #0008}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.modal-head h2{margin:0}.close{background:none;color:#aab6cc;font-size:25px}.modal-form{display:grid;gap:13px}.subject-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}.add-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:15px}.danger{color:#ff91a2;background:#321b27;border-radius:9px;padding:7px 10px}
+@media(max-width:650px){.app{width:min(100% - 18px,1120px);padding-top:16px}.form-grid{grid-template-columns:1fr}.setup-card{padding:24px}.stats{gap:8px}.stat{padding:14px}.stat b{font-size:22px}.task{grid-template-columns:auto 1fr}.delete{grid-column:2;text-align:left;padding:0}.toolbar{align-items:flex-start;flex-direction:column}.filters{width:100%;overflow:auto}.fab{right:18px;bottom:18px}}
+</style>
 </head>
 <body>
 
-<div id="page-setup" class="view-page">
-  <div class="setup-container">
-    <div class="setup-logo">🎓</div>
-    <div class="setup-title">반 / 학기 맞춤 설정</div>
-    <div class="setup-desc">학년과 반, 학기를 선택하시면<br>교육과정에 맞는 과목 세팅을 자동으로 도웁니다.</div>
-    
-    <div class="form-group" style="text-align: left;">
-      <label>학년</label>
-      <select id="setup-grade" onchange="updateClassOptions()">
-        <option value="1">1학년</option>
-        <option value="2">2학년</option>
-      </select>
+<section id="setupPage" class="setup">
+  <div class="setup-card">
+    <div class="logo">🎓</div>
+    <div class="eyebrow">수행평가 플래너</div>
+    <h1>반 / 학기 맞춤 설정</h1>
+    <p class="desc">학년과 반, 학기를 선택하면 과목을 자동으로 준비합니다. 모든 데이터는 이 브라우저에 저장됩니다.</p>
+    <div class="form-grid">
+      <label>학년<select id="grade"><option value="1">1학년</option><option value="2">2학년</option><option value="3">3학년</option></select></label>
+      <label>반<select id="classNo"></select></label>
+      <label>학기<select id="term"><option value="1">1학기</option><option value="2">2학기</option></select></label>
     </div>
-    
-    <div class="form-group" style="text-align: left;">
-      <label>반</label>
-      <select id="setup-class"></select>
-    </div>
-    
-    <div class="form-group" style="text-align: left; margin-bottom: 24px;">
-      <label>학기</label>
-      <select id="setup-term">
-        <option value="1">1학기</option>
-        <option value="2">2학기</option>
-      </select>
-    </div>
-    
-    <button class="btn-submit" onclick="submitSetup()">확인 및 시작하기</button>
+    <button class="primary" id="startBtn">확인 및 시작하기</button>
+  </div>
+</section>
+
+<main id="appPage" class="app hidden">
+<header>
+  <div class="brand"><div class="brand-icon">📋</div><div><h1>수행평가 관리</h1><div class="sub" id="profileText"></div></div></div>
+  <button class="ghost" id="resetBtn">설정 재선택</button>
+</header>
+
+<section class="stats">
+  <div class="stat"><b id="total">0</b><span>전체</span></div>
+  <div class="stat"><b id="completed">0</b><span>완료</span></div>
+  <div class="stat"><b id="remaining">0</b><span>남은 것</span></div>
+</section>
+
+<div class="toolbar">
+  <div class="filters" id="filters"></div>
+  <button class="ghost" id="manageBtn">과목 관리 ⚙️</button>
+</div>
+<section id="taskList" class="list"></section>
+<button class="fab" id="addBtn" aria-label="수행평가 추가">+</button>
+</main>
+
+<div id="subjectModal" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-head"><h2>등록 과목 편집 및 관리</h2><button class="close" data-close="subjectModal">×</button></div>
+    <div class="add-row"><input id="newSubject" placeholder="추가할 과목명 입력"><button class="primary" id="addSubjectBtn">추가</button></div>
+    <div id="subjectList"></div>
   </div>
 </div>
 
-<div id="page-dashboard" class="view-page">
-  <header>
-    <div class="header-left">
-      <div class="header-icon">📋</div>
-      <div style="display: flex; flex-direction: column; gap: 2px;">
-        <h1>수행평가 관리</h1>
-        <span class="class-info-badge" id="header-class-info" onclick="resetSetupData()">설정 재선택</span>
-      </div>
-    </div>
-    <div class="api-status">
-      <div class="dot" id="status-dot"></div>
-      <span id="status-text">연결 중</span>
-    </div>
-  </header>
-
-  <main>
-    <div class="stats">
-      <div class="stat">
-        <span class="stat-label">전체</span>
-        <span class="stat-value blue" id="stat-total">0</span>
-      </div>
-      <div class="stat">
-        <span class="stat-label">완료</span>
-        <span class="stat-value green" id="stat-done">0</span>
-      </div>
-      <div class="stat">
-        <span class="stat-label">남은것</span>
-        <span class="stat-value red" id="stat-remain">0</span>
-      </div>
-    </div>
-
-    <div>
-      <div class="section-header">
-        <div class="section-title">과목 필터</div>
-        <button class="btn-manage" onclick="openSubjectModal()">과목 관리 ⚙️</button>
-      </div>
-      <div class="filter-row" id="filter-container"></div>
-    </div>
-
-    <div>
-      <div class="section-title">목록</div>
-      <div class="task-list" id="task-list"></div>
-    </div>
-  </main>
-
-  <button class="fab" id="fab" onclick="toggleModal()">+</button>
-</div>
-
-<div class="modal-overlay center-modal" id="subject-modal" onclick="closeSubjectModalOnOverlay(event)">
-  <div class="modal">
-    <div class="modal-title">등록 과목 편집 및 관리</div>
-    
-    <div class="subject-add-inline">
-      <input type="text" id="new-subject-input" placeholder="추가할 과목명 입력" onkeydown="if(event.key==='Enter')addSubjectInline()"/>
-      <button class="btn-inline-add" onclick="addSubjectInline()">추가</button>
-    </div>
-
-    <label style="margin-bottom: 6px; display: block;">등록된 과목 리스트</label>
-    <div class="subject-manage-box" id="subject-manage-list"></div>
-
-    <button class="btn-close-modal" onclick="closeSubjectModal()">닫기</button>
-  </div>
-</div>
-
-<div class="confirm-overlay" id="confirm-overlay">
-  <div class="confirm-box">
-    <div class="confirm-title">삭제할까요?</div>
-    <div class="confirm-desc">삭제하면 되돌릴 수 없어요</div>
-    <div class="confirm-btns">
-      <button class="confirm-cancel" onclick="closeConfirm()">취소</button>
-      <button class="confirm-ok" id="confirm-ok-btn">삭제</button>
+<div id="taskModal" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-head"><h2>새 수행평가 추가</h2><button class="close" data-close="taskModal">×</button></div>
+    <div class="modal-form">
+      <label>과목<select id="taskSubject"></select></label>
+      <label>수행평가 제목<input id="taskTitle" placeholder="예) 독서 감상문 쓰기"></label>
+      <label>마감일<input id="taskDate" type="date"></label>
+      <button class="primary" id="saveTask">추가하기</button>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-overlay" onclick="closeOnOverlay(event)">
-  <div class="modal">
-    <div class="modal-handle"></div>
-    <div class="modal-title">새 수행평가 추가</div>
+<script>
+(() => {
+  const KEY="plannerjsx_assignment_v3";
+  const $=id=>document.getElementById(id);
+  const state=JSON.parse(localStorage.getItem(KEY)||"null")||{profile:null,subjects:[],tasks:[]};
+  let filter="전체";
 
-    <div class="form-group">
-      <label>과목</label>
-      <div class="custom-select" id="custom-select">
-        <div class="custom-select-btn" id="select-btn" onclick="toggleDropdown()">
-          <span id="select-label">과목 선택</span>
-          <span class="custom-select-arrow">▼</span>
-        </div>
-        <div class="custom-select-dropdown" id="select-dropdown"></div>
-      </div>
-    </div>
+  const subjectMap={
+    "1-1":["공통국어1","공통영어1","공통수학1","통합과학1","통합사회1","한국사","체육","음악","기술가정"],
+    "1-2":["공통국어2","공통영어2","공통수학2","통합과학2","통합사회2","한국사","체육","정보","미술"],
+    "2-1":["화법과 언어","대수","영어1","체육","음악"],
+    "2-2":["문학","미적분1","영어2","체육","미술"],
+    "3-1":["언어와 매체","확률과 통계","영어 독해와 작문","체육","음악"],
+    "3-2":["문학","미적분","영어 독해와 작문","체육","미술"]
+  };
 
-    <div class="form-group">
-      <label>수행평가 제목</label>
-      <input type="text" id="title" placeholder="예) 독서 감상문 쓰기" />
-    </div>
+  function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+  function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+  function fillClasses(){const n=+$("grade").value;$("classNo").innerHTML=Array.from({length:n===3?12:13},(_,i)=>`<option value="${i+1}">${i+1}반</option>`).join("")}
+  $("grade").addEventListener("change",fillClasses);fillClasses();
 
-    <div class="form-group">
-      <label>마감일</label>
-      <input type="date" id="due" />
-    </div>
+  function defaultSubjects(){
+    const k=state.profile.grade+"-"+state.profile.term;
+    return [...(subjectMap[k]||["국어","영어","수학","사회","과학","체육"])];
+  }
+  function openModal(id){$(id).classList.remove("hidden")}
+  function closeModal(id){$(id).classList.add("hidden")}
+  document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>closeModal(b.dataset.close));
+  document.querySelectorAll(".modal").forEach(m=>m.onclick=e=>{if(e.target===m)closeModal(m.id)});
 
-    <button class="btn-submit" onclick="addTask()">추가하기</button>
-  </div>
-</div>
+  function initApp(){
+    $("setupPage").classList.add("hidden");$("appPage").classList.remove("hidden");
+    $("profileText").textContent=`${state.profile.grade}학년 ${state.profile.classNo}반 · ${state.profile.term}학기`;
+    render();
+  }
+  $("startBtn").onclick=()=>{
+    state.profile={grade:+$("grade").value,classNo:+$("classNo").value,term:+$("term").value};
+    if(!state.subjects.length) state.subjects=defaultSubjects();
+    save();initApp();
+  };
+  $("resetBtn").onclick=()=>{
+    $("grade").value=state.profile?.grade||1;fillClasses();
+    $("classNo").value=state.profile?.classNo||1;$("term").value=state.profile?.term||1;
+    $("appPage").classList.add("hidden");$("setupPage").classList.remove("hidden");
+  };
 
-<script src="script.js"></script>
+  function dday(date){
+    if(!date)return "";
+    const a=new Date();a.setHours(0,0,0,0);const b=new Date(date+"T00:00:00");return Math.ceil((b-a)/86400000);
+  }
+  function render(){
+    if(!state.profile)return;
+    const done=state.tasks.filter(t=>t.done).length;
+    $("total").textContent=state.tasks.length;$("completed").textContent=done;$("remaining").textContent=state.tasks.length-done;
+    const fs=["전체",...state.subjects];
+    $("filters").innerHTML=fs.map(s=>`<button class="filter ${filter===s?"active":""}" data-f="${esc(s)}">${esc(s)}</button>`).join("");
+    document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{filter=b.dataset.f;render()});
+    $("taskSubject").innerHTML=state.subjects.map(s=>`<option>${esc(s)}</option>`).join("");
+    const arr=state.tasks.filter(t=>filter==="전체"||t.subject===filter).sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999"));
+    $("taskList").innerHTML=arr.length?arr.map(t=>{
+      const d=dday(t.date);let badge=d<0?`<span class="badge dday">기한 지남</span>`:d===0?`<span class="badge dday">D-Day</span>`:d?`<span class="badge dday">D-${d}</span>`:"";
+      return `<article class="task ${t.done?"done":""}">
+        <button class="check ${t.done?"done":""}" data-toggle="${t.id}">${t.done?"✓":""}</button>
+        <div><div class="title">${esc(t.title)}</div><div class="meta"><span class="badge">${esc(t.subject)}</span>${t.date?`<span class="badge">${esc(t.date)}</span>`:""}${badge}</div></div>
+        <button class="delete" data-delete="${t.id}">삭제</button>
+      </article>`;
+    }).join(""):`<div class="empty">등록된 수행평가가 없습니다.<br>오른쪽 아래 <b>+</b> 버튼으로 추가해 보세요.</div>`;
+    document.querySelectorAll("[data-toggle]").forEach(b=>b.onclick=()=>{const t=state.tasks.find(x=>x.id==b.dataset.toggle);if(t){t.done=!t.done;save();render()}});
+    document.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>{if(confirm("이 수행평가를 삭제할까요?")){state.tasks=state.tasks.filter(t=>t.id!=b.dataset.delete);save();render()}});
+  }
+
+  $("addBtn").onclick=()=>{if(!state.subjects.length){alert("먼저 과목을 추가해 주세요.");return} $("taskTitle").value="";$("taskDate").value="";openModal("taskModal")};
+  $("saveTask").onclick=()=>{
+    const title=$("taskTitle").value.trim(),subject=$("taskSubject").value,date=$("taskDate").value;
+    if(!title){alert("수행평가 제목을 입력해 주세요.");$("taskTitle").focus();return}
+    state.tasks.push({id:Date.now()+Math.random(),title,subject,date,done:false});save();closeModal("taskModal");render();
+  };
+  $("manageBtn").onclick=()=>{renderSubjects();openModal("subjectModal")};
+  function renderSubjects(){
+    $("subjectList").innerHTML=state.subjects.length?state.subjects.map((s,i)=>`<div class="subject-row"><span>${esc(s)}</span><button class="danger" data-subdel="${i}">삭제</button></div>`).join(""):`<div class="empty">등록된 과목이 없습니다.</div>`;
+    document.querySelectorAll("[data-subdel]").forEach(b=>b.onclick=()=>{
+      const s=state.subjects[+b.dataset.subdel];
+      if(!confirm(`"${s}" 과목을 삭제할까요?`))return;
+      state.subjects.splice(+b.dataset.subdel,1);state.tasks=state.tasks.filter(t=>t.subject!==s);if(filter===s)filter="전체";save();renderSubjects();render();
+    });
+  }
+  $("addSubjectBtn").onclick=()=>{
+    const s=$("newSubject").value.trim();if(!s)return;
+    if(state.subjects.includes(s)){alert("이미 등록된 과목입니다.");return}
+    state.subjects.push(s);$("newSubject").value="";save();renderSubjects();render();
+  };
+  $("newSubject").addEventListener("keydown",e=>{if(e.key==="Enter")$("addSubjectBtn").click()});
+
+  if(state.profile){$("grade").value=state.profile.grade;fillClasses();$("classNo").value=state.profile.classNo;$("term").value=state.profile.term;initApp()}
+})();
+</script>
 </body>
 </html>
