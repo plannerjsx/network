@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -41,24 +40,21 @@ body {
   padding-bottom: 100px;
 }
 
+/* 페이지 뷰 제어 */
 .view-page { display: none; }
 .view-page.active { display: block; }
 
+/* 인트로 학급 학기 설정 폼 */
 .setup-container {
-  max-width: 400px;
-  margin: 80px auto;
-  padding: 32px 24px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  text-align: center;
+  max-width: 400px; margin: 80px auto; padding: 32px 24px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4); text-align: center;
 }
-
 .setup-logo { font-size: 48px; margin-bottom: 16px; }
 .setup-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
 .setup-desc { font-size: 14px; color: var(--text-sub); margin-bottom: 32px; }
 
+/* 헤더 */
 header {
   background: rgba(10,14,26,0.85);
   backdrop-filter: blur(20px);
@@ -72,60 +68,35 @@ header {
   z-index: 100;
   border-bottom: 1px solid var(--border);
 }
-
 .header-left { display: flex; align-items: center; gap: 10px; }
-
 .header-icon {
-  width: 32px;
-  height: 32px;
+  width: 32px; height: 32px;
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
   border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   font-size: 15px;
 }
-
 header h1 { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); }
-
-.class-info-badge {
-  font-size: 12px;
-  font-weight: 500;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  padding: 4px 10px;
-  border-radius: 8px;
-  color: var(--blue);
-  cursor: pointer;
-}
+.class-info-badge { font-size: 12px; font-weight: 500; background: var(--surface2); border: 1px solid var(--border); padding: 4px 10px; border-radius: 8px; color: var(--blue); cursor: pointer; }
 
 .api-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-sub); }
 .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); transition: background 0.3s; }
 .dot.connected { background: var(--success); box-shadow: 0 0 6px var(--success); }
 .dot.error { background: var(--danger); }
 
-main {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+/* 메인 */
+main { max-width: 640px; margin: 0 auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 20px; }
 
+/* 통계 */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-
 .stat {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  display: flex; flex-direction: column; gap: 6px;
   transition: border-color 0.2s;
 }
-
 .stat:hover { border-color: var(--blue); }
 .stat-label { font-size: 11px; color: var(--text-sub); font-weight: 500; letter-spacing: 0.03em; }
 .stat-value { font-size: 28px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
@@ -133,59 +104,35 @@ main {
 .stat-value.green { color: var(--success); }
 .stat-value.red { color: var(--danger); }
 
+/* 섹션 타이틀 컴포넌트 */
 .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .section-title { font-size: 13px; font-weight: 600; color: var(--text-sub); letter-spacing: 0.04em; text-transform: uppercase; }
-
-.btn-manage {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-sub);
-  font-size: 12px;
-  font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--sans);
-  transition: all 0.15s;
-}
-
+.btn-manage { background: transparent; border: 1px solid var(--border); color: var(--text-sub); font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-family: var(--sans); transition: all 0.15s; }
 .btn-manage:hover { border-color: var(--blue); color: var(--text); background: var(--blue-glow); }
 
+/* 필터 */
 .filter-row { display: flex; gap: 6px; flex-wrap: wrap; }
-
 .filter-btn {
-  padding: 7px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  border: 1px solid var(--border);
-  border-radius: 99px;
-  background: transparent;
-  color: var(--text-sub);
-  cursor: pointer;
-  font-family: var(--sans);
+  padding: 7px 14px; font-size: 13px; font-weight: 500;
+  border: 1px solid var(--border); border-radius: 99px;
+  background: transparent; color: var(--text-sub);
+  cursor: pointer; font-family: var(--sans);
   transition: all 0.15s;
 }
-
 .filter-btn:hover { border-color: var(--blue); color: var(--text); }
 .filter-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
 
+/* 수행평가 목록 */
 .task-list { display: flex; flex-direction: column; gap: 8px; }
-
 .task-item {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  display: flex; align-items: center; gap: 14px;
   transition: all 0.2s;
   animation: slideIn 0.2s ease;
 }
-
 .task-item:hover { border-color: var(--blue); background: var(--surface2); transform: translateY(-1px); }
 .task-item.done { opacity: 0.4; }
 .task-item.done .task-title { text-decoration: line-through; }
@@ -196,31 +143,20 @@ main {
 }
 
 .task-check {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
+  width: 22px; height: 22px; border-radius: 50%;
   border: 1.5px solid var(--border);
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  flex-shrink: 0;
-  font-size: 11px;
-  color: white;
+  background: transparent; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; flex-shrink: 0;
+  font-size: 11px; color: white;
 }
-
 .task-check:hover { border-color: var(--blue); }
 .task-check.checked { background: var(--blue); border-color: var(--blue); }
 
 .subject-badge {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 9px;
-  border-radius: 7px;
-  flex-shrink: 0;
-  white-space: nowrap;
+  font-size: 11px; font-weight: 600;
+  padding: 4px 9px; border-radius: 7px;
+  flex-shrink: 0; white-space: nowrap;
   letter-spacing: 0.01em;
 }
 
@@ -229,71 +165,51 @@ main {
 .task-due { font-size: 12px; color: var(--text-sub); }
 
 .dday-badge {
-  font-size: 12px;
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 8px;
-  flex-shrink: 0;
-  white-space: nowrap;
+  font-size: 12px; font-weight: 600;
+  padding: 5px 10px; border-radius: 8px;
+  flex-shrink: 0; white-space: nowrap;
 }
-
 .dday-urgent { background: var(--danger-light); color: var(--danger); }
 .dday-soon { background: var(--warning-light); color: var(--warning); }
 .dday-ok { background: var(--blue-glow); color: var(--blue); }
 .dday-done { background: rgba(255,255,255,0.05); color: var(--text-muted); }
 
 .btn-del {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-size: 18px;
-  cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 6px;
-  transition: all 0.15s;
-  line-height: 1;
+  background: transparent; border: none;
+  color: var(--text-muted); font-size: 18px;
+  cursor: pointer; padding: 2px 6px; border-radius: 6px;
+  transition: all 0.15s; line-height: 1;
 }
-
 .btn-del:hover { color: var(--danger); background: var(--danger-light); }
 
+/* 빈 상태 */
 .empty { text-align: center; padding: 48px 20px; color: var(--text-sub); font-size: 14px; }
 .empty-icon { font-size: 36px; margin-bottom: 12px; }
 
+/* 플로팅 버튼 */
 .fab {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  position: fixed; bottom: 28px; right: 28px;
+  width: 56px; height: 56px; border-radius: 50%;
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-  border: none;
-  color: white;
-  font-size: 26px;
-  cursor: pointer;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: none; color: white; font-size: 26px;
+  cursor: pointer; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 24px rgba(59,130,246,0.4);
   transition: all 0.2s;
 }
-
 .fab:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(59,130,246,0.5); }
 .fab.open { transform: rotate(45deg); }
 
+/* 모달 베이스 */
 .modal-overlay {
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(4px);
   z-index: 150;
-  display: none;
-  align-items: flex-end;
-  justify-content: center;
+  display: none; align-items: flex-end; justify-content: center;
 }
-
 .modal-overlay.open { display: flex; }
+
 .modal-overlay.center-modal { align-items: center; }
 .modal-overlay.center-modal .modal { border-radius: 24px; max-width: 440px; padding: 28px 24px; animation: popIn 0.2s ease; }
 
@@ -302,74 +218,34 @@ main {
   border: 1px solid var(--border);
   border-radius: 24px 24px 0 0;
   padding: 28px 24px 40px;
-  width: 100%;
-  max-width: 640px;
+  width: 100%; max-width: 640px;
   animation: slideUp 0.25s ease;
 }
-
 @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
 .modal-handle { width: 36px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 24px; }
 .modal-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.02em; }
 
 .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
-
 label { font-size: 12px; font-weight: 600; color: var(--text-sub); letter-spacing: 0.04em; text-transform: uppercase; }
-
 input, select {
-  font-family: var(--sans);
-  font-size: 15px;
+  font-family: var(--sans); font-size: 15px;
   padding: 13px 16px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface2);
-  color: var(--text);
-  outline: none;
-  transition: border-color 0.15s;
+  border: 1px solid var(--border); border-radius: 12px;
+  background: var(--surface2); color: var(--text);
+  outline: none; transition: border-color 0.15s;
 }
-
 input:focus, select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-glow); }
 select option { background: var(--surface2); }
-
 .due-date-row { display: flex; align-items: stretch; gap: 8px; }
 .due-date-row input[type="date"] { flex: 1; min-width: 0; color-scheme: dark; cursor: pointer; }
-
-.btn-calendar {
-  flex: 0 0 auto;
-  min-width: 48px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--blue-glow);
-  color: var(--text);
-  padding: 0 14px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background .15s, border-color .15s;
-}
-
+.btn-calendar { flex: 0 0 auto; min-width: 48px; border: 1px solid var(--border); border-radius: 12px; background: var(--blue-glow); color: var(--text); padding: 0 14px; font-size: 18px; cursor: pointer; transition: background .15s, border-color .15s; }
 .btn-calendar:hover { border-color: var(--blue); background: var(--blue-light); }
 .due-date-hint { color: var(--text-sub); font-size: 11px; line-height: 1.5; }
 
-.subject-manage-box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-height: 220px;
-  overflow-y: auto;
-  margin-bottom: 20px;
-  padding-right: 4px;
-}
-
-.subject-manage-item {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  padding: 12px 16px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
+/* 과목 관리 내부 박스 */
+.subject-manage-box { display: flex; flex-direction: column; gap: 8px; max-height: 220px; overflow-y: auto; margin-bottom: 20px; padding-right: 4px; }
+.subject-manage-item { background: var(--surface2); border: 1px solid var(--border); padding: 12px 16px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; }
 .sub-item-left { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; }
 .sub-item-dot { width: 8px; height: 8px; border-radius: 50%; }
 .btn-sub-item-del { background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 16px; padding: 2px 6px; border-radius: 6px; }
@@ -377,169 +253,68 @@ select option { background: var(--surface2); }
 
 .subject-add-inline { display: flex; gap: 8px; margin-bottom: 16px; }
 .subject-add-inline input { flex: 1; padding: 11px 14px; font-size: 14px; }
-
-.btn-inline-add {
-  padding: 0 16px;
-  background: var(--blue);
-  border: none;
-  color: white;
-  font-weight: 600;
-  border-radius: 12px;
-  cursor: pointer;
-  font-family: var(--sans);
-  font-size: 14px;
-}
-
+.btn-inline-add { padding: 0 16px; background: var(--blue); border: none; color: white; font-weight: 600; border-radius: 12px; cursor: pointer; font-family: var(--sans); font-size: 14px; }
 .btn-inline-add:hover { background: var(--blue-dark); }
 
 .btn-submit {
-  width: 100%;
-  padding: 15px;
+  width: 100%; padding: 15px;
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-  color: white;
-  border: none;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: var(--sans);
-  cursor: pointer;
-  margin-top: 8px;
+  color: white; border: none; border-radius: 14px;
+  font-size: 15px; font-weight: 600; font-family: var(--sans);
+  cursor: pointer; margin-top: 8px;
   transition: opacity 0.15s;
   box-shadow: 0 4px 16px rgba(59,130,246,0.3);
 }
-
 .btn-submit:hover { opacity: 0.9; }
-
-.btn-close-modal {
-  width: 100%;
-  padding: 13px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: var(--text-sub);
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: var(--sans);
-  cursor: pointer;
-  transition: all 0.15s;
-  text-align: center;
-}
-
+.btn-close-modal { width: 100%; padding: 13px; background: var(--surface2); border: 1px solid var(--border); color: var(--text-sub); border-radius: 12px; font-size: 14px; font-weight: 500; font-family: var(--sans); cursor: pointer; transition: all 0.15s; text-align: center; }
 .btn-close-modal:hover { color: var(--text); border-color: var(--text-sub); }
 
+/* 커스텀 드롭다운 */
 .custom-select { position: relative; }
-
 .custom-select-btn {
-  width: 100%;
-  padding: 13px 16px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface2);
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: 15px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: border-color 0.15s;
-  user-select: none;
+  width: 100%; padding: 13px 16px;
+  border: 1px solid var(--border); border-radius: 12px;
+  background: var(--surface2); color: var(--text);
+  font-family: var(--sans); font-size: 15px;
+  cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  transition: border-color 0.15s; user-select: none;
 }
-
 .custom-select-btn:hover { border-color: var(--blue); }
 .custom-select-btn.open { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-glow); border-radius: 0 0 12px 12px; }
 .custom-select-arrow { font-size: 12px; color: var(--text-sub); transition: transform 0.25s ease; }
 .custom-select-btn.open .custom-select-arrow { transform: rotate(180deg); }
-
 .custom-select-dropdown {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  background: var(--surface2);
-  border: 1px solid var(--blue);
-  border-bottom: none;
-  border-radius: 12px 12px 0 0;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease, opacity 0.2s ease;
-  opacity: 0;
-  z-index: 50;
+  position: absolute; bottom: 100%; left: 0; right: 0;
+  background: var(--surface2); border: 1px solid var(--blue); border-bottom: none;
+  border-radius: 12px 12px 0 0; overflow: hidden; max-height: 0;
+  transition: max-height 0.3s ease, opacity 0.2s ease; opacity: 0; z-index: 50;
 }
-
 .custom-select-dropdown.open { max-height: 400px; opacity: 1; overflow-y: auto; }
-
 .custom-select-option {
-  padding: 12px 16px;
-  font-size: 14px;
-  color: var(--text-sub);
-  cursor: pointer;
-  transition: all 0.12s;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  padding: 12px 16px; font-size: 14px; color: var(--text-sub);
+  cursor: pointer; transition: all 0.12s; display: flex; align-items: center; gap: 10px;
 }
-
 .custom-select-option:hover { background: var(--blue-glow); color: var(--text); }
 .custom-select-option.selected { color: var(--blue); font-weight: 600; }
 .custom-select-option .opt-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
+/* 컨펌 창 */
 .confirm-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(4px);
-  z-index: 300;
-  display: none;
-  align-items: center;
-  justify-content: center;
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+  z-index: 300; display: none; align-items: center; justify-content: center;
 }
-
 .confirm-overlay.open { display: flex; }
-
 .confirm-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 28px 24px;
-  width: 90%;
-  max-width: 320px;
-  text-align: center;
-  animation: popIn 0.2s ease;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+  padding: 28px 24px; width: 90%; max-width: 320px; text-align: center; animation: popIn 0.2s ease;
 }
-
 @keyframes popIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
-
 .confirm-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
 .confirm-desc { font-size: 14px; color: var(--text-sub); margin-bottom: 24px; }
 .confirm-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-.confirm-cancel {
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-sub);
-  font-size: 14px;
-  font-weight: 500;
-  font-family: var(--sans);
-  cursor: pointer;
-}
-
+.confirm-cancel { padding: 12px; border-radius: 12px; border: 1px solid var(--border); background: transparent; color: var(--text-sub); font-size: 14px; font-weight: 500; font-family: var(--sans); cursor: pointer; }
 .confirm-cancel:hover { background: var(--surface2); }
-
-.confirm-ok {
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  background: var(--danger);
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: var(--sans);
-  cursor: pointer;
-}
-
+.confirm-ok { padding: 12px; border-radius: 12px; border: none; background: var(--danger); color: white; font-size: 14px; font-weight: 600; font-family: var(--sans); cursor: pointer; }
 .confirm-ok:hover { opacity: 0.9; }
 
 @media (max-width: 480px) {
@@ -548,6 +323,7 @@ select option { background: var(--surface2); }
   .dday-badge { display: none; }
   .fab { bottom: 20px; right: 20px; }
 }
+
   </style>
 </head>
 <body>
@@ -556,7 +332,6 @@ select option { background: var(--surface2); }
       <div class="setup-logo">🎓</div>
       <div class="setup-title">반 / 학기 맞춤 설정</div>
       <div class="setup-desc">학년과 반, 학기를 선택하시면<br>교육과정에 맞는 과목 세팅을 자동으로 도웁니다.</div>
-
       <div class="form-group" style="text-align:left;">
         <label for="setup-grade">학년</label>
         <select id="setup-grade" onchange="updateClassOptions()">
@@ -564,12 +339,10 @@ select option { background: var(--surface2); }
           <option value="2">2학년</option>
         </select>
       </div>
-
       <div class="form-group" style="text-align:left;">
         <label for="setup-class">반</label>
         <select id="setup-class"></select>
       </div>
-
       <div class="form-group" style="text-align:left; margin-bottom:24px;">
         <label for="setup-term">학기</label>
         <select id="setup-term">
@@ -577,7 +350,6 @@ select option { background: var(--surface2); }
           <option value="2">2학기</option>
         </select>
       </div>
-
       <button class="btn-submit" onclick="submitSetup()">확인 및 시작하기</button>
     </div>
   </div>
@@ -603,7 +375,6 @@ select option { background: var(--surface2); }
         <div class="stat"><span class="stat-label">완료</span><span class="stat-value green" id="stat-done">0</span></div>
         <div class="stat"><span class="stat-label">남은것</span><span class="stat-value red" id="stat-remain">0</span></div>
       </div>
-
       <div>
         <div class="section-header">
           <div class="section-title">과목 필터</div>
@@ -611,13 +382,11 @@ select option { background: var(--surface2); }
         </div>
         <div class="filter-row" id="filter-container"></div>
       </div>
-
       <div>
         <div class="section-title" style="margin-bottom:12px;">목록</div>
         <div class="task-list" id="task-list"></div>
       </div>
     </main>
-
     <button class="fab" id="fab" onclick="toggleModal()" aria-label="수행평가 추가">+</button>
   </div>
 
@@ -649,7 +418,6 @@ select option { background: var(--surface2); }
     <div class="modal">
       <div class="modal-handle"></div>
       <div class="modal-title">새 수행평가 추가</div>
-
       <div class="form-group">
         <label>과목</label>
         <div class="custom-select" id="custom-select">
@@ -660,12 +428,10 @@ select option { background: var(--surface2); }
           <div class="custom-select-dropdown" id="select-dropdown"></div>
         </div>
       </div>
-
       <div class="form-group">
         <label for="title">수행평가 제목</label>
         <input type="text" id="title" placeholder="예) 독서 감상문 쓰기" />
       </div>
-
       <div class="form-group">
         <label for="due">마감일</label>
         <div class="due-date-row">
@@ -674,26 +440,28 @@ select option { background: var(--surface2); }
         </div>
         <div class="due-date-hint">날짜 입력란이나 달력 아이콘을 눌러 마감일을 선택하세요.</div>
       </div>
-
       <button class="btn-submit" onclick="addTask()">추가하기</button>
     </div>
   </div>
 
   <script type="module">
+// Firebase SDK ES Modules Import
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  onSnapshot,
-  deleteDoc,
-  doc,
-  updateDoc,
-  setDoc,
-  query,
-  orderBy
+import { 
+  getFirestore, 
+  collection, 
+  addDoc, 
+  onSnapshot, 
+  deleteDoc, 
+  doc, 
+  updateDoc, 
+  setDoc, 
+  getDoc, 
+  query, 
+  orderBy 
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+// ⚠️ 본인의 Firebase Console 프로젝트 설정 객체로 치환하세요.
 const firebaseConfig = {
   apiKey: "AIzaSyAjd9Pb8VLnXDKYnkASmsUY_-Ay8MCPZJA",
   authDomain: "project-657db.firebaseapp.com",
@@ -704,14 +472,18 @@ const firebaseConfig = {
   measurementId: "G-W324EC2NXW"
 };
 
+
+// 전역 변수
 let app = null;
 let db = null;
 let allTasks = [];
 let currentFilter = "전체";
-let selectedSubject = "";
+let selectedSubject = '';
 let pendingDeleteId = null;
 let activeSubjects = [];
+let unsubscribeTasks = null;
 
+// 1. Firebase DB 초기화
 try {
   app = initializeApp(firebaseConfig);
   db = getFirestore(app);
@@ -724,56 +496,44 @@ try {
 function setStatus(ok) {
   const dot = document.getElementById("status-dot");
   const txt = document.getElementById("status-text");
-
   if (dot && txt) {
     dot.className = "dot " + (ok ? "connected" : "error");
     txt.textContent = ok ? "연결됨" : "오프라인(Local)";
   }
 }
 
+// 2. 색상 생성기
 function getSubjectColor(subject) {
   const fixedColors = {
-    "공통국어1": "#818cf8",
-    "공통국어2": "#818cf8",
-    "공통영어1": "#34d399",
-    "공통영어2": "#34d399",
-    "공통수학1": "#fbbf24",
-    "공통수학2": "#fbbf24",
-    "통합과학1": "#60a5fa",
-    "통합과학2": "#60a5fa",
-    "통합사회1": "#f87171",
-    "통합사회2": "#f87171",
-    "한국사": "#c084fc",
-    "체육": "#2dd4bf",
-    "음악": "#fb923c",
-    "기술가정": "#a7f3d0",
-    "정보": "#38bdf8",
-    "미술": "#f472b6",
-    "화법과 언어": "#a78bfa",
-    "대수": "#f59e0b",
-    "영어1": "#10b981",
-    "문학": "#e879f9",
-    "미적분1": "#f43f5e",
-    "영어2": "#06b6d4"
+    "공통국어1": "#818cf8", "공통국어2": "#818cf8",
+    "공통영어1": "#34d399", "공통영어2": "#34d399",
+    "공통수학1": "#fbbf24", "공통수학2": "#fbbf24",
+    "통합과학1": "#60a5fa", "통합과학2": "#60a5fa",
+    "통합사회1": "#f87171", "통합사회2": "#f87171",
+    "한국사": "#c084fc", "체육": "#2dd4bf",
+    "음악": "#fb923c", "기술가정": "#a7f3d0",
+    "정보": "#38bdf8", "미술": "#f472b6",
+    "화법과 언어": "#a78bfa", "대수": "#f59e0b",
+    "영어1": "#10b981", "문학": "#e879f9",
+    "미적분1": "#f43f5e", "영어2": "#06b6d4"
   };
-
   if (fixedColors[subject]) return fixedColors[subject];
-
   let hash = 0;
   for (let i = 0; i < subject.length; i++) {
     hash = subject.charCodeAt(i) + ((hash << 5) - hash);
   }
-
   const h = Math.abs(hash % 360);
   return `hsl(${h}, 70%, 65%)`;
 }
 
+// 3. UI 페이지 전환
 window.showPage = function(pageId) {
-  document.querySelectorAll(".view-page").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll('.view-page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById(pageId);
-  if (target) target.classList.add("active");
+  if (target) target.classList.add('active');
 };
 
+// 4. 학년별 반 선택 옵션 자동 동기화 (1학년: 13반, 2학년: 12반)
 window.updateClassOptions = function() {
   const gradeSelect = document.getElementById("setup-grade");
   const classSelect = document.getElementById("setup-class");
@@ -781,15 +541,15 @@ window.updateClassOptions = function() {
 
   const grade = gradeSelect.value;
   const maxClass = grade === "2" ? 12 : 13;
-
+  
   let optionsHtml = "";
   for (let i = 1; i <= maxClass; i++) {
     optionsHtml += `<option value="${i}">${i}반</option>`;
   }
-
   classSelect.innerHTML = optionsHtml;
 };
 
+// 5. 설정 제출 및 대시보드 진입
 window.submitSetup = async function() {
   const grade = document.getElementById("setup-grade").value;
   const sClass = parseInt(document.getElementById("setup-class").value);
@@ -799,15 +559,9 @@ window.submitSetup = async function() {
 
   if (grade === "1") {
     subjects = [
-      `공통국어${term}`,
-      `공통영어${term}`,
-      `공통수학${term}`,
-      `통합과학${term}`,
-      `통합사회${term}`,
-      "한국사",
-      "체육"
+      `공통국어${term}`, `공통영어${term}`, `공통수학${term}`,
+      `통합과학${term}`, `통합사회${term}`, "한국사", "체육"
     ];
-
     if (sClass >= 1 && sClass <= 6) {
       if (term === "1") subjects.push("음악", "기술가정");
       else subjects.push("정보", "미술");
@@ -825,50 +579,91 @@ window.submitSetup = async function() {
     }
   }
 
-  activeSubjects = subjects;
+  // 이전 학년/반의 실시간 구독과 화면 데이터를 먼저 초기화합니다.
+  if (typeof unsubscribeTasks === "function") {
+    unsubscribeTasks();
+    unsubscribeTasks = null;
+  }
+  allTasks = [];
+  currentFilter = "전체";
+  selectedSubject = subjects[0] || "";
+
+  activeSubjects = [...subjects];
   localStorage.setItem("activeSubjects", JSON.stringify(activeSubjects));
   localStorage.setItem("userClassConfig", JSON.stringify({ grade, sClass, term }));
 
+  // Firestore 메타 정보 동기화 후 새 학급 데이터만 불러옵니다.
   await syncSubjectsToFirestore();
   initDashboard();
 };
 
 window.resetSetupData = function() {
   if (confirm("학급 설정을 변경하시겠습니까? (저장된 과목 리스트가 초기화됩니다.)")) {
+    // 설정 화면으로 돌아갈 때 이전 학급의 구독과 화면 데이터를 완전히 정리합니다.
+    if (typeof unsubscribeTasks === "function") {
+      unsubscribeTasks();
+      unsubscribeTasks = null;
+    }
+    allTasks = [];
+    activeSubjects = [];
+    currentFilter = "전체";
+    selectedSubject = "";
+
     localStorage.removeItem("activeSubjects");
     localStorage.removeItem("userClassConfig");
 
     const fc = document.getElementById("filter-container");
+    const taskList = document.getElementById("task-list");
+    const dropdown = document.getElementById("select-dropdown");
+    const label = document.getElementById("select-label");
     if (fc) fc.innerHTML = "";
+    if (taskList) taskList.innerHTML = "";
+    if (dropdown) dropdown.innerHTML = "";
+    if (label) { label.textContent = "과목 선택"; label.style.color = ""; }
 
+    updateStats();
     updateClassOptions();
     showPage("page-setup");
   }
 };
 
+// 6. Firestore 데이터 수신 및 대시보드 초기화
 function initDashboard() {
   const config = JSON.parse(localStorage.getItem("userClassConfig"));
+  if (!config) {
+    showPage("page-setup");
+    return;
+  }
 
-  if (config) {
-    document.getElementById("header-class-info").textContent =
-      `${config.grade}학년 ${config.sClass}반 (${config.term}학기) ⚙️`;
+  // 이전 학급의 onSnapshot 구독이 남아 있으면 이전 데이터가 다시 표시될 수 있으므로 해제합니다.
+  if (typeof unsubscribeTasks === "function") {
+    unsubscribeTasks();
+    unsubscribeTasks = null;
+  }
+
+  const headerInfo = document.getElementById("header-class-info");
+  if (headerInfo) {
+    headerInfo.textContent = `${config.grade}학년 ${config.sClass}반 (${config.term}학기) ⚙️`;
   }
 
   activeSubjects = JSON.parse(localStorage.getItem("activeSubjects")) || [];
-
-  if (activeSubjects.length > 0 && (!selectedSubject || !activeSubjects.includes(selectedSubject))) {
-    selectedSubject = activeSubjects[0];
+  currentFilter = "전체";
+  if (!activeSubjects.includes(selectedSubject)) {
+    selectedSubject = activeSubjects[0] || "";
   }
 
+  // 새 학급의 데이터가 도착하기 전까지 이전 수행평가가 보이지 않도록 비웁니다.
+  allTasks = [];
   renderFiltersAndDropdown();
+  renderTasks();
+  updateStats();
   listenToFirestore();
   showPage("page-dashboard");
 }
 
 function getClassCollectionRef() {
   const config = JSON.parse(localStorage.getItem("userClassConfig"));
-  if (!config || !db) return null;
-
+  if (!config) return null;
   const classId = `${config.grade}-${config.sClass}`;
   return collection(db, "classes", classId, "tasks");
 }
@@ -876,25 +671,21 @@ function getClassCollectionRef() {
 async function syncSubjectsToFirestore() {
   const config = JSON.parse(localStorage.getItem("userClassConfig"));
   if (!config || !db) return;
-
   const classId = `${config.grade}-${config.sClass}`;
   const docRef = doc(db, "classes", classId);
-
   await setDoc(docRef, { subjects: activeSubjects }, { merge: true });
 }
 
 function listenToFirestore() {
   const tasksRef = getClassCollectionRef();
-  if (!tasksRef) return;
+  if (!tasksRef || !db) return;
 
   const q = query(tasksRef, orderBy("due", "asc"));
-
-  onSnapshot(q, (snapshot) => {
+  unsubscribeTasks = onSnapshot(q, (snapshot) => {
     allTasks = snapshot.docs.map(docSnap => ({
       id: docSnap.id,
       ...docSnap.data()
     }));
-
     renderTasks();
     updateStats();
   }, (err) => {
@@ -903,11 +694,10 @@ function listenToFirestore() {
   });
 }
 
-/* 📅 달력 버튼을 누르면 날짜 선택 창 열기 */
+// 7. C.R.U.D 핸들러
 window.openDueCalendar = function() {
   const dueInput = document.getElementById("due");
   if (!dueInput) return;
-
   try {
     if (typeof dueInput.showPicker === "function") {
       dueInput.showPicker();
@@ -929,51 +719,33 @@ window.addTask = async function() {
   const title = titleInput ? titleInput.value.trim() : "";
   const due = dueInput ? dueInput.value : "";
 
-  if (!subject) {
-    alert("과목을 선택하거나 과목 관리에서 등록해주세요!");
-    return;
-  }
-
-  if (!title) {
-    alert("제목을 입력해주세요!");
-    return;
-  }
-
-  if (!due) {
-    alert("마감일을 선택해주세요!");
-    return;
-  }
+  if (!subject) { alert("과목을 선택하거나 과목 관리에서 등록해주세요!"); return; }
+  if (!title) { alert("제목을 입력해주세요!"); return; }
+  if (!due) { alert("마감일을 선택해주세요!"); return; }
 
   const tasksRef = getClassCollectionRef();
-  if (!tasksRef) {
-    alert("학급 설정 또는 Firebase 연결을 확인해주세요.");
-    return;
-  }
-
-  try {
-    await addDoc(tasksRef, {
-      subject,
-      title,
-      due,
-      done: false,
-      createdAt: new Date()
-    });
-
-    if (titleInput) titleInput.value = "";
-    if (dueInput) dueInput.value = "";
-
-    toggleModal();
-  } catch (err) {
-    alert("데이터 저장 중 오류가 발생했습니다: " + err.message);
+  if (tasksRef) {
+    try {
+      await addDoc(tasksRef, {
+        subject,
+        title,
+        due,
+        done: false,
+        createdAt: new Date()
+      });
+      if (titleInput) titleInput.value = "";
+      if (dueInput) dueInput.value = "";
+      toggleModal();
+    } catch (err) {
+      alert("데이터 저장 중 오류가 발생했습니다: " + err.message);
+    }
   }
 };
 
 window.toggleDone = async function(id, currentDone) {
   const config = JSON.parse(localStorage.getItem("userClassConfig"));
   if (!config || !db) return;
-
   const docRef = doc(db, "classes", `${config.grade}-${config.sClass}`, "tasks", id);
-
   try {
     await updateDoc(docRef, { done: !currentDone });
   } catch (err) {
@@ -983,23 +755,20 @@ window.toggleDone = async function(id, currentDone) {
 
 window.deleteTask = function(id) {
   pendingDeleteId = id;
-
   const overlay = document.getElementById("confirm-overlay");
   const okBtn = document.getElementById("confirm-ok-btn");
-
+  
   if (overlay) overlay.classList.add("open");
-
+  
   if (okBtn) {
     okBtn.onclick = async () => {
       const targetId = pendingDeleteId;
       closeConfirm();
-
+      
       if (targetId !== null) {
         const config = JSON.parse(localStorage.getItem("userClassConfig"));
-
         if (config && db) {
           const docRef = doc(db, "classes", `${config.grade}-${config.sClass}`, "tasks", targetId);
-
           try {
             await deleteDoc(docRef);
           } catch (err) {
@@ -1017,6 +786,7 @@ window.closeConfirm = function() {
   pendingDeleteId = null;
 };
 
+// 8. 과목 관리 모달 제어
 window.openSubjectModal = function() {
   const sm = document.getElementById("subject-modal");
   if (sm) sm.classList.add("open");
@@ -1026,39 +796,28 @@ window.openSubjectModal = function() {
 window.closeSubjectModal = function() {
   const sm = document.getElementById("subject-modal");
   if (sm) sm.classList.remove("open");
-
   const input = document.getElementById("new-subject-input");
   if (input) input.value = "";
 };
 
 window.closeSubjectModalOnOverlay = function(e) {
-  if (e.target === document.getElementById("subject-modal")) {
-    closeSubjectModal();
-  }
+  if (e.target === document.getElementById("subject-modal")) closeSubjectModal();
 };
 
 window.addSubjectInline = async function() {
   const input = document.getElementById("new-subject-input");
   const value = input ? input.value.trim() : "";
-
-  if (!value) {
-    alert("과목명을 입력해 주세요!");
-    return;
-  }
-
-  if (activeSubjects.includes(value)) {
-    alert("이미 존재하는 과목명입니다.");
-    return;
-  }
+  
+  if (!value) { alert("과목명을 입력해 주세요!"); return; }
+  if (activeSubjects.includes(value)) { alert("이미 존재하는 과목명입니다."); return; }
 
   activeSubjects.push(value);
   localStorage.setItem("activeSubjects", JSON.stringify(activeSubjects));
-
   await syncSubjectsToFirestore();
-
+  
   if (input) input.value = "";
-  selectedSubject = value;
-
+  selectedSubject = value; 
+  
   renderSubjectManageList();
   renderFiltersAndDropdown();
   renderTasks();
@@ -1069,10 +828,8 @@ window.removeSubjectInline = async function(subject) {
   const count = relatedTasks.length;
 
   let confirmMessage = `'${subject}' 과목을 목록에서 삭제할까요?`;
-
   if (count > 0) {
-    confirmMessage =
-      `'${subject}' 과목을 삭제하면 등록된 관련 수행평가 ${count}개도 함께 삭제됩니다. 정말 삭제하시겠습니까?`;
+    confirmMessage = `'${subject}' 과목을 삭제하면 등록된 관련 수행평가 ${count}개도 함께 삭제됩니다. 정말 삭제하시겠습니까?`;
   }
 
   if (!confirm(confirmMessage)) return;
@@ -1090,30 +847,28 @@ window.removeSubjectInline = async function(subject) {
 
   activeSubjects = activeSubjects.filter(s => s !== subject);
   localStorage.setItem("activeSubjects", JSON.stringify(activeSubjects));
-
   await syncSubjectsToFirestore();
-
+  
   if (currentFilter === subject) currentFilter = "전체";
-  if (selectedSubject === subject) selectedSubject = activeSubjects[0] || "";
+  if (selectedSubject === subject) selectedSubject = activeSubjects[0] || '';
 
   renderSubjectManageList();
   renderFiltersAndDropdown();
   renderTasks();
 };
 
+// 9. UI 렌더링 헬퍼 함수
 function renderSubjectManageList() {
   const box = document.getElementById("subject-manage-list");
   if (!box) return;
 
   if (activeSubjects.length === 0) {
-    box.innerHTML =
-      `<div style="text-align:center; color:var(--text-muted); font-size:13px; padding:20px 0;">등록된 과목이 없습니다.</div>`;
+    box.innerHTML = `<div style="text-align:center; color:var(--text-muted); font-size:13px; padding:20px 0;">등록된 과목이 없습니다.</div>`;
     return;
   }
 
   box.innerHTML = activeSubjects.map(sub => {
     const color = getSubjectColor(sub);
-
     return `
       <div class="subject-manage-item">
         <div class="sub-item-left">
@@ -1128,43 +883,35 @@ function renderSubjectManageList() {
 
 function renderFiltersAndDropdown() {
   const filterContainer = document.getElementById("filter-container");
-
   if (filterContainer) {
-    let filterHtml =
-      `<button class="filter-btn ${currentFilter === '전체' ? 'active' : ''}" onclick="setFilter('전체', this)">전체</button>`;
-
+    let filterHtml = `<button class="filter-btn ${currentFilter === '전체' ? 'active' : ''}" onclick="setFilter('전체', this)">전체</button>`;
     activeSubjects.forEach(sub => {
-      filterHtml +=
-        `<button class="filter-btn ${currentFilter === sub ? 'active' : ''}" onclick="setFilter('${sub}', this)">${sub}</button>`;
+      filterHtml += `<button class="filter-btn ${currentFilter === sub ? 'active' : ''}" onclick="setFilter('${sub}', this)">${sub}</button>`;
     });
-
     filterContainer.innerHTML = filterHtml;
   }
 
   const dropdownContainer = document.getElementById("select-dropdown");
   const labelContainer = document.getElementById("select-label");
-
+  
   if (dropdownContainer) {
     if (activeSubjects.length > 0 && (!selectedSubject || !activeSubjects.includes(selectedSubject))) {
       selectedSubject = activeSubjects[0];
     }
-
+    
     if (labelContainer && selectedSubject) {
       labelContainer.textContent = selectedSubject;
       labelContainer.style.color = getSubjectColor(selectedSubject);
     }
 
     let dropdownHtml = "";
-
     activeSubjects.forEach(sub => {
       const color = getSubjectColor(sub);
-
       dropdownHtml += `
         <div class="custom-select-option ${selectedSubject === sub ? 'selected' : ''}" onclick="selectOption('${sub}', '${color}')">
           <span class="opt-dot" style="background:${color}"></span>${sub}
         </div>`;
     });
-
     dropdownContainer.innerHTML = dropdownHtml;
   }
 }
@@ -1173,9 +920,7 @@ function renderTasks() {
   const list = document.getElementById("task-list");
   if (!list) return;
 
-  const filtered = currentFilter === "전체"
-    ? allTasks
-    : allTasks.filter(t => t.subject === currentFilter);
+  const filtered = currentFilter === "전체" ? allTasks : allTasks.filter(t => t.subject === currentFilter);
 
   if (filtered.length === 0) {
     list.innerHTML = `<div class="empty"><div class="empty-icon">🎉</div>수행평가가 없어요!</div>`;
@@ -1184,7 +929,6 @@ function renderTasks() {
 
   list.innerHTML = filtered.map(task => {
     const color = getSubjectColor(task.subject);
-
     return `
       <div class="task-item ${task.done ? 'done' : ''}">
         <div class="task-check ${task.done ? 'checked' : ''}" onclick="toggleDone('${task.id}', ${task.done})">${task.done ? '✓' : ''}</div>
@@ -1203,7 +947,6 @@ function renderTasks() {
 function updateStats() {
   const total = allTasks.length;
   const done = allTasks.filter(t => t.done).length;
-
   const tEl = document.getElementById("stat-total");
   const dEl = document.getElementById("stat-done");
   const rEl = document.getElementById("stat-remain");
@@ -1214,46 +957,37 @@ function updateStats() {
 }
 
 function dday(due) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const dueDate = new Date(due + "T00:00:00");
-  return Math.ceil((dueDate - today) / 86400000);
+  const today = new Date(); today.setHours(0,0,0,0);
+  return Math.ceil((new Date(due) - today) / 86400000);
 }
 
 function ddayText(due, done) {
   if (done) return "완료";
-
   const d = dday(due);
   if (d < 0) return "기한초과";
   if (d === 0) return "D-Day";
-
   return `D-${d}`;
 }
 
 function ddayClass(due, done) {
   if (done) return "dday-done";
-
   const d = dday(due);
   if (d <= 3) return "dday-urgent";
   if (d <= 7) return "dday-soon";
-
   return "dday-ok";
 }
 
 window.toggleModal = function() {
   const overlay = document.getElementById("modal-overlay");
   const fab = document.getElementById("fab");
-
   if (!overlay || !fab) return;
 
   const isOpen = overlay.classList.contains("open");
   overlay.classList.toggle("open");
   fab.classList.toggle("open");
-
+  
   const sb = document.getElementById("select-btn");
   const sd = document.getElementById("select-dropdown");
-
   if (sb) sb.classList.remove("open");
   if (sd) sd.classList.remove("open");
 
@@ -1264,15 +998,12 @@ window.toggleModal = function() {
 };
 
 window.closeOnOverlay = function(e) {
-  if (e.target === document.getElementById("modal-overlay")) {
-    toggleModal();
-  }
+  if (e.target === document.getElementById("modal-overlay")) toggleModal();
 };
 
 window.toggleDropdown = function() {
   const btn = document.getElementById("select-btn");
   const dd = document.getElementById("select-dropdown");
-
   if (btn && dd) {
     btn.classList.toggle("open");
     dd.classList.toggle("open");
@@ -1281,71 +1012,56 @@ window.toggleDropdown = function() {
 
 window.selectOption = function(value, color) {
   selectedSubject = value;
-
   const label = document.getElementById("select-label");
   if (label) {
     label.textContent = value;
     label.style.color = color;
   }
-
   document.querySelectorAll(".custom-select-option").forEach(o => o.classList.remove("selected"));
-
   if (window.event && window.event.currentTarget) {
     window.event.currentTarget.classList.add("selected");
   }
-
   const btn = document.getElementById("select-btn");
   const dd = document.getElementById("select-dropdown");
-
   if (btn) btn.classList.remove("open");
   if (dd) dd.classList.remove("open");
 };
 
 window.setFilter = function(subject, btn) {
   currentFilter = subject;
-
   document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-
+  btn.classList.add('active');
   renderTasks();
 };
 
 document.addEventListener("click", (e) => {
   const cs = document.getElementById("custom-select");
-
   if (cs && !cs.contains(e.target)) {
     const btn = document.getElementById("select-btn");
     const dd = document.getElementById("select-dropdown");
-
     if (btn) btn.classList.remove("open");
     if (dd) dd.classList.remove("open");
   }
 });
 
-window.addEventListener("DOMContentLoaded", () => {
+// 초기화 이벤트
+window.addEventListener('DOMContentLoaded', () => {
   const dueEl = document.getElementById("due");
-
   if (dueEl) {
     const today = new Date();
-    const localToday = [
-      today.getFullYear(),
-      String(today.getMonth() + 1).padStart(2, "0"),
-      String(today.getDate()).padStart(2, "0")
-    ].join("-");
-
-    dueEl.min = localToday;
+    dueEl.min = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
   }
-
+  
   updateClassOptions();
-
+  
   const hasConfig = localStorage.getItem("userClassConfig");
-
   if (hasConfig) {
     initDashboard();
   } else {
     showPage("page-setup");
   }
 });
+
   </script>
 </body>
 </html>
