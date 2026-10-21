@@ -592,9 +592,16 @@ window.submitSetup = async function() {
   localStorage.setItem("activeSubjects", JSON.stringify(activeSubjects));
   localStorage.setItem("userClassConfig", JSON.stringify({ grade, sClass, term }));
 
-  // Firestore 메타 정보 동기화 후 새 학급 데이터만 불러옵니다.
-  await syncSubjectsToFirestore();
-  initDashboard();
+  // Firestore 저장이 실패해도 설정 화면에 갇히지 않도록 대시보드 진입은 항상 진행합니다.
+  // 오프라인 상태나 Firestore 보안 규칙 문제는 콘솔에 기록하고 화면에는 로컬 설정을 사용합니다.
+  try {
+    await syncSubjectsToFirestore();
+  } catch (e) {
+    console.error("과목 설정을 Firestore에 저장하지 못했습니다. 대시보드로 계속 이동합니다:", e);
+    setStatus(false);
+  } finally {
+    initDashboard();
+  }
 };
 
 window.resetSetupData = function() {
